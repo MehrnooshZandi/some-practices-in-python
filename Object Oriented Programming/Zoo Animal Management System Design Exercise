@@ -1,0 +1,134 @@
+'''
+Problem Description:
+A zoo wants to create an animal management system. You need to design this system using object-oriented programming (OOP) in Python.
+
+1. Introduction to Object-Oriented Programming (OOP Introduction)
+Your Task:
+Define a class called Animal that has the following properties:
+
+name (animal name)
+species (animal species)
+age (animal age)
+sound (animal sound)
+Then create an instance of this class for a "lion" and print its properties.
+
+2. Attributes and Class Keywords
+Your Task:
+Add a make_sound() method to the Animal class that prints the animal's sound.
+
+3. Class Object Attributes and Methods
+Your Task:
+Add a class attribute (zoo_name) that specifies the name of the zoo. Also, define an info() method that prints the animal's properties.
+
+4. Inheritance and Polymorphism
+Your task:
+Create a new class called Bird from Animal that has a new property called wing_span.
+Rewrite the make_sound() method so that the birds make different sounds.
+
+5. Magic/Dunder Methods
+Your task:
+Implement the __str__ method in the Animal class so that when you print the object, the animal's characteristics are displayed.
+'''
+#1. OOP Introduction – Define the Animal Class
+
+
+class Animal:
+    def __init__(self, name, species, age, sound):
+        self.name = name
+        self.species = species
+        self.age = age
+        self.sound = sound
+
+# Creating an instance of Animal for a lion
+lion = Animal("Leo", "Lion", 5, "Roar")
+
+# Printing its properties
+print(lion.name)     # Leo
+print(lion.species)  # Lion
+print(lion.age)      # 5
+print(lion.sound)    # Roar
+
+#2. Add make_sound() Method
+class Animal:
+    def __init__(self, name, species, age, sound):
+        self.name = name
+        self.species = species
+        self.age = age
+        self.sound = sound
+
+    def make_sound(self):
+        print(self.sound)
+
+# Test
+lion = Animal("Leo", "Lion", 5, "Roar")
+lion.make_sound()  # Output: Roar
+
+#3. Add Class Attribute zoo_name and info() Method
+class Animal:
+    zoo_name = "Green Valley Zoo"
+
+    def __init__(self, name, species, age, sound):
+        self.name = name
+        self.species = species
+        self.age = age
+        self.sound = sound
+
+    def make_sound(self):
+        print(self.sound)
+
+    def info(self):
+        print(f"Name: {self.name}")
+        print(f"Species: {self.species}")
+        print(f"Age: {self.age}")
+        print(f"Sound: {self.sound}")
+        print(f"Zoo: {Animal.zoo_name}")
+
+# Test
+lion = Animal("Leo", "Lion", 5, "Roar")
+lion.info()
+
+
+#4. Inheritance and Polymorphism – Define Bird Subclass
+class Bird(Animal):
+    def __init__(self, name, species, age, sound, wing_span):
+        super().__init__(name, species, age, sound)
+        self.wing_span = wing_span  # in cm
+
+    def make_sound(self):
+        print(f"{self.name} chirps: {self.sound}")
+
+# Test
+parrot = Bird("Polly", "Parrot", 2, "Squawk", 25)
+parrot.make_sound()    # Output: Polly chirps: Squawk
+parrot.info()          # Uses inherited info() method
+print(f"Wing Span: {parrot.wing_span} cm")
+
+
+#5. Implement __str__ Method in Animal Class
+class Animal:
+    zoo_name = "Green Valley Zoo"
+
+    def __init__(self, name, species, age, sound):
+        self.name = name
+        self.species = species
+        self.age = age
+        self.sound = sound
+
+    def make_sound(self):
+        print(self.sound)
+
+    def info(self):
+        print(f"Name: {self.name}")
+        print(f"Species: {self.species}")
+        print(f"Age: {self.age}")
+        print(f"Sound: {self.sound}")
+        print(f"Zoo: {Animal.zoo_name}")
+
+    def __str__(self):
+        return f"{self.name} the {self.species}, Age: {self.age}, Sound: {self.sound}, Zoo: {Animal.zoo_name}"
+
+# Test
+lion = Animal("Leo", "Lion", 5, "Roar")
+print(lion)  # Uses __str__ to print nicely
+
+
